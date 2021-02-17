@@ -1,22 +1,110 @@
   import React from 'react';
-  import PokemonList from '../../components/PokemonList';
-  import PokedexBlock from '../../components/PokedexBlock';
-  import PokeInfos from '../../components/PokeInfos';
+  import PokemonList from '../../src/components/PokemonList';
+  import PokedexBlock from '../../src/components/PokedexBlock';
+  import PokeInfos from '../../src/components/PokeInfos';
+  import InfosBlock from '../../src/components/InfosBlock';
+  import PokedexHeader from '../../src/components/PokedexHeader';
 
   export default function Pokemon({pokemon, pokemons}) {
-      console.log(pokemon);
-      return (
-        <PokedexBlock>
-            <PokemonList pokemons={pokemons}/>
+    const [infoState, setInfoState] = React.useState(0)
+  
+    function nextClick() {
+      setInfoState(pokemons.length !== infoState ? infoState + 1 : infoState)
+    }
+  
+    function backClick() {
+      setInfoState(1 !== infoState ? infoState - 1 : infoState)
+    }
 
-            <PokeInfos>
-              <img  src={`${pokemon.sprites.front_default}`} alt="Imagem de um pokémon" />
-              <img  src={`${pokemon.sprites.front_shiny}`} alt="Imagem de um pokémon" />
-              <h1>
-              {`${pokemon.name}`}
-              </h1>
-            </PokeInfos>         
-        </PokedexBlock>
+    console.log(pokemon);
+      return (
+        <>
+          <PokedexHeader />
+          <PokedexBlock>
+              <PokemonList pokemons={pokemons}/>
+
+              <PokeInfos>
+                <img  src={`${pokemon.sprites.front_default}`} alt="Imagem de um pokémon" />
+                <img  src={`${pokemon.sprites.front_shiny}`} alt="Imagem de um pokémon" />
+
+                <InfosBlock>
+                  <div>
+                    <h1>
+                    Name
+                    </h1>
+                    
+                    <p>{`${pokemon.name}`}</p>
+                  </div>
+
+                  <div>
+                    <h1>
+                      Type
+                    </h1>
+
+                    <ul>
+                  {pokemon.types.map((typeBlock) => {
+                    return(
+                      <li>
+                        {typeBlock.type.name}
+                      </li>
+                    )
+                  })}
+                  </ul>
+                  </div>
+                </InfosBlock>
+
+                <InfosBlock>
+                  <h1>
+                    Abilities
+                  </h1>
+                  <ul>
+                  {pokemon.abilities.map((abilityBlock) => {
+                    return(
+                      <li>
+                        {abilityBlock.ability.name}
+                      </li>
+                    )
+                  })}
+                  </ul>
+                </InfosBlock>
+
+                
+                <InfosBlock>
+                  <h1>
+                    Held Item
+                  </h1>
+                  <ul>
+                  {pokemon.held_items.map((itemBlock) => {
+                    return(
+                      <li>
+                        {itemBlock.item.name}
+                      </li>
+                    )
+                  })}
+                  </ul>
+                </InfosBlock>
+
+                              
+                <InfosBlock>
+                  <div>
+                    <h1>
+                      Height
+                    </h1>
+                    <p>{`${pokemon.height}`}</p>
+                  </div>
+
+                  <div>
+                    <h1>
+                      Weight
+                    </h1>
+                    <p>{`${pokemon.weight}`}</p>
+                  </div>
+                </InfosBlock>
+
+
+              </PokeInfos>         
+          </PokedexBlock>
+        </>
       )
   }
 
