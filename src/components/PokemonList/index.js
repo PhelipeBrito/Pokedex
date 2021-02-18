@@ -3,10 +3,16 @@ import Link from 'next/link'
 
 const List = styled.ul`
   overflow-y: scroll;
-  width: 12%;
+  width: 100vw;
+  position: absolute;
 
   background-color: #DADADA;
-`
+
+  @media (min-width: 768px) {
+    width: 12%;
+    position: relative;
+  }
+ `
 
 List.Topic = styled.a`
     font-family: 'Rosario', sans-serif;
