@@ -7,6 +7,11 @@
 
   export default function Pokemon({pokemon, pokemons}) {
     const [infoState, setInfoState] = React.useState(0)
+    const [list, listState] = React.useState(false)
+
+    function listToggle() {
+      listState(!list)
+    }
   
     function nextClick() {
       setInfoState(pokemons.length !== infoState ? infoState + 1 : infoState)
@@ -16,12 +21,13 @@
       setInfoState(1 !== infoState ? infoState - 1 : infoState)
     }
 
-    console.log(pokemon);
+    console.log(listToggle);
       return (
-        <>
-          <PokedexHeader />
+        <>    
+          <PokedexHeader listToggle={listToggle}/>   
           <PokedexBlock>
-              <PokemonList pokemons={pokemons}/>
+              {list ? <PokemonList pokemons={pokemons}/> : null}
+              
 
               <PokeInfos>
                 <img  src={`${pokemon.sprites.front_default}`} alt="Imagem de um pokémon" />
