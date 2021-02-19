@@ -12,7 +12,7 @@ Pokemon.TableRow = styled.tr`
 function InfoTable({ height, weight, abilities, heldItems}) {
      return(
           <table>
-               {/*Pokemon's height and weight*/}
+               {/*Pokémon's height and weight*/}
                <Pokemon.TableRow>
                    <th>Weight</th>
                    <th>Height</th> 
@@ -23,6 +23,7 @@ function InfoTable({ height, weight, abilities, heldItems}) {
                     <td>{height}</td>
                </Pokemon.TableRow>
 
+               {/* Pokémon's abilities*/}
                <Pokemon.TableRow>
                     <th>Abilites</th>
                </Pokemon.TableRow>
@@ -35,7 +36,8 @@ function InfoTable({ height, weight, abilities, heldItems}) {
                     )
                     })}
                </Pokemon.TableRow>
-
+               
+               {/* Pokémon's held items */}
                <Pokemon.TableRow>
                     <th>HeldItems</th>
                </Pokemon.TableRow>
