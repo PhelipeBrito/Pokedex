@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { AiOutlineBars } from "react-icons/ai";
 
 const Header = styled.header`
     width: 100%;
@@ -26,7 +27,7 @@ function PokedexHeader({listToggle}) {
             <Header.ButtonListToggle
                 onClick={(() => listToggle())}
             >
-                List
+                <AiOutlineBars />
             </Header.ButtonListToggle>
         </Header>
     )
